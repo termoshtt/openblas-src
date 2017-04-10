@@ -28,7 +28,7 @@ fn main() {
                     .current_dir(&source));
         println!("cargo:rustc-link-search={}", output.join("opt/OpenBLAS/lib").display());
     }
-    println!("cargo:rustc-link-lib=dylib=gfortran");
+    println!("cargo:rustc-link-lib=dylib=irc");
     println!("cargo:rustc-link-lib={}=openblas", kind);
 }
 
