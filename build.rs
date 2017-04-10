@@ -28,8 +28,10 @@ fn main() {
                     .current_dir(&source));
         println!("cargo:rustc-link-search={}", output.join("opt/OpenBLAS/lib").display());
     }
-    println!("cargo:rustc-link-lib=dylib=irc");
     println!("cargo:rustc-link-lib={}=openblas", kind);
+    println!("cargo:rustc-link-lib=dylib=irc");
+    println!("cargo:rustc-link-lib=dylib=ifcore");
+    println!("cargo:rustc-link-lib=dylib=svml");
 }
 
 fn run(command: &mut Command) {
