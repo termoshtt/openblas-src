@@ -37,14 +37,17 @@ exclude = [
 [features]
 default = ["cblas", "lapack", "lapacke", "static", "openmp"]
 
+# Component Options
 cblas = []
 lapack = []
 lapacke = []
 
+# Feature Options
 openmp = []
 ilp64 = []
 dynamic_arch = []
 
+# Link Options
 static = []
 system = []
 
