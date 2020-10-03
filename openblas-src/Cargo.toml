@@ -51,7 +51,7 @@ system = []
 [dev-dependencies]
 libc = "0.2"
 
-[build-dependencies.openblas-build]
+[target.'cfg(target_family="unix")'.build-dependencies.openblas-build]
 path = "../openblas-build"
 version = "0.1.0"
 
