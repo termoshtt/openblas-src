@@ -1,4 +1,4 @@
-name: Rust
+name: openblas-src
 
 on:
   push:
@@ -37,7 +37,9 @@ jobs:
     - uses: actions-rs/cargo@v1
       with:
         command: test
-        args: --features=${{ matrix.feature }}
+        args: >
+          --features=${{ matrix.feature }}
+          --manifest-path=openblas-src/Cargo.toml
       env:
         VCPKG_ROOT: ${{ github.workspace }}/vcpkg
 
@@ -61,7 +63,9 @@ jobs:
     - uses: actions-rs/cargo@v1
       with:
         command: test
-        args: --features=${{ matrix.feature }}
+        args: >
+          --features=${{ matrix.feature }}
+          --manifest-path=openblas-src/Cargo.toml
 
   linux:
     runs-on: ubuntu-18.04
@@ -78,6 +82,10 @@ jobs:
     - uses: actions/checkout@v1
       with:
         submodules: 'recursive'
+    - name: Install gfortran by apt
+      run: |
+        apt update
+        apt install -y gfortran
     - name: Install OpenBLAS by apt
       run: |
         apt update
@@ -86,4 +94,6 @@ jobs:
     - uses: actions-rs/cargo@v1
       with:
         command: test
-        args: --features=${{ matrix.feature }}
+        args: >
+          --features=${{ matrix.feature }}
+          --manifest-path=openblas-src/Cargo.toml
